@@ -1,0 +1,46 @@
+{
+    "dataSources": {
+        "1": {
+            "props": {
+                "strategyName": "rr",
+                "realDss": [
+                    "c3p0DataSource1"
+                ]
+            }
+        }
+    },
+    "shardIndex": 1,
+    "indexTableMap": {
+        "USER_ID_INDEX": [
+            {
+                "name": "user_id",
+                "columnType": "long",
+                "columnName": "user_id",
+                "length": 32
+            }
+        ]
+    },
+    "segmentTables": [],
+    "realDataSources": {
+        "c3p0DataSource1": {
+            "beanClass": "com.mchange.v2.c3p0.ComboPooledDataSource",
+            "props": {
+                "acquireRetryAttempts": "30",
+                "acquireRetryDelay": "100",
+                "maxIdleTime": "60",
+                "testConnectionOnCheckout": "false",
+                "breakAfterAcquireFailure": "false",
+                "password": "aA111111",
+                "acquireIncrement": "100",
+                "idleConnectionTestPeriod": "60",
+                "maxPoolSize": "20000",
+                "maxStatements": "100",
+                "minPoolSize": "100",
+                "driverClass": "com.mysql.jdbc.Driver",
+                "initialPoolSize": "100",
+                "jdbcUrl": "jdbc:mysql://123.57.213.13:3304/collect_dev",
+                "user": "collecttest"
+            }
+        }
+    }
+}

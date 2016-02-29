@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://code.alibabatech.com/schema/dubbo
+	http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+	<!-- 提供方应用信息，用于计算依赖关系 -->
+<!-- 	<dubbo:application name="collect_core" /> -->
+	<!-- 使用multicast广播注册中心暴露服务地址 -->
+<!-- 	<dubbo:registry address="multicast://224.4.1.4:2048" /> -->
+<!--     <dubbo:registry address="zookeeper://localhost:2181" /> -->
+	<dubbo:consumer timeout="60000" />
+	<!-- 用dubbo协议在20880端口暴露服务 -->
+<!-- 	<dubbo:protocol name="dubbo" port="20889" /> -->
+	<!-- 声明需要暴露的服务接口 -->
+	<!-- <dubbo:service interface="com.gd.app.service.TaskHandlerService" -->
+	<!-- ref="taskHandlerService" /> -->
+	<!-- <dubbo:service interface="com.gd.app.service.TaskUtilService" -->
+	<!-- ref="taskUtilService" /> -->
+	<!-- <dubbo:service interface="com.gd.app.service.AppealService" -->
+	<!-- ref="appealService" /> -->
+	<!-- <dubbo:service interface="com.gd.app.service.AgentTaskService" -->
+	<!-- ref="agentTaskService" /> -->
+	<!-- <dubbo:service interface="com.gd.app.service.AgentTailInfoService" -->
+	<!-- ref="agentTailInfoService" /> -->
+	<!-- 声明需要暴露的服务接口 -->
+	<dubbo:service interface="com.autonavi.collect.service.PassiveTaskService"
+		ref="passiveTaskServiceImpl" />
+	<dubbo:service interface="com.autonavi.collect.service.InitiativeTaskService"
+		ref="initiativeTaskServiceImpl" />
+	 <dubbo:service interface="com.autonavi.collect.service.TaskTokenService"
+		ref="taskTokenServiceImpl" />
+	<dubbo:service interface="com.autonavi.collect.service.TaskScoreService"
+		ref="taskScoreServiceImpl" />
+	<dubbo:service interface="com.autonavi.collect.service.TaskCollectUtilService"
+		ref="taskCollectUtilServiceImpl" />
+	<dubbo:service interface="com.autonavi.collect.service.MyTaskService"
+		ref="myTaskServiceImpl" />
+	<dubbo:service interface="com.autonavi.collect.service.TaskSearchService"
+		ref="taskSearchServiceImpl" />
+	<dubbo:service interface="com.autonavi.collect.service.CollectTaskClazzService"
+		ref="collectTaskClazzServiceImpl" />
+	<dubbo:service interface="com.autonavi.collect.service.CollectTaskClazzMgrService"
+		ref="collectTaskClazzMgrServiceImpl" />
+	<dubbo:service interface="com.autonavi.collect.service.CollectMgrUtilService"
+		ref="collectMgrUtilServiceImpl" />
+	<dubbo:service interface="com.autonavi.collect.service.CollectTaskReAuditService"
+		ref="collectTaskReAuditServiceImpl" />
+</beans>

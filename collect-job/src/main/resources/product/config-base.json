@@ -1,0 +1,74 @@
+{
+    "dataSources": {
+        "1": {
+            "props": {
+                "strategyName": "rr",
+                "realDss": [
+                    "c3p0DataSource1"
+                ]
+            }
+        },
+        "2": {
+            "props": {
+                "strategyName": "rr",
+                "realDss": [
+                    "c3p0DataSource2"
+                ]
+            }
+        }
+    },
+    "shardIndex": 1,
+    "indexTableMap": {
+        "USERNAME_INDEX": [
+            {
+                "name": "username",
+                "columnType": "string",
+                "columnName": "username",
+                "length": 100
+            }
+        ]
+    },
+    "segmentTables": [],
+    "realDataSources": {
+        "c3p0DataSource1": {
+            "beanClass": "com.mchange.v2.c3p0.ComboPooledDataSource",
+            "props": {
+                "acquireRetryAttempts": "30",
+                "acquireRetryDelay": "100",
+                "maxIdleTime": "60",
+                "testConnectionOnCheckout": "false",
+                "breakAfterAcquireFailure": "false",
+                "password": "93f0cb0614",
+                "acquireIncrement": "100",
+                "idleConnectionTestPeriod": "60",
+                "maxPoolSize": "20000",
+                "maxStatements": "100",
+                "minPoolSize": "100",
+                "driverClass": "com.mysql.jdbc.Driver",
+                "initialPoolSize": "100",
+                "jdbcUrl": "jdbc:mysql://10.19.3.157:3306/addresscollect",
+                "user": "root"
+            }
+        },
+        "c3p0DataSource2": {
+            "beanClass": "com.mchange.v2.c3p0.ComboPooledDataSource",
+            "props": {
+                "acquireRetryAttempts": "30",
+                "acquireRetryDelay": "100",
+                "maxIdleTime": "60",
+                "testConnectionOnCheckout": "false",
+                "breakAfterAcquireFailure": "false",
+                "password": "93f0cb0614",
+                "acquireIncrement": "100",
+                "idleConnectionTestPeriod": "60",
+                "maxPoolSize": "20000",
+                "maxStatements": "100",
+                "minPoolSize": "100",
+                "driverClass": "com.mysql.jdbc.Driver",
+                "initialPoolSize": "100",
+                "jdbcUrl": "jdbc:mysql://10.19.3.158:3306/addresscollect",
+                "user": "root"
+            }
+        }
+    }
+}

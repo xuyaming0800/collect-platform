@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
+        http://www.springframework.org/schema/context  
+        http://www.springframework.org/schema/context/spring-context-4.0.xsd  
+        http://www.springframework.org/schema/aop   
+        http://www.springframework.org/schema/aop/spring-aop-4.0.xsd 
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+<!-- 	<bean id="jtaDataSource1" class="com.atomikos.jdbc.AtomikosDataSourceBean" -->
+<!-- 		init-method="init" destroy-method="close"> -->
+<!-- 		<property name="uniqueResourceName" value="ds1" /> -->
+<!-- 		<property name="xaDataSourceClassName" -->
+<!-- 			value="com.mysql.jdbc.jdbc2.optional.MysqlXADataSource" /> -->
+<!-- 		<property name="xaProperties"> -->
+<!-- 			<props> -->
+<!-- 				<prop key="URL">jdbc:mysql://10.19.3.159:3306/addresscollect</prop> -->
+<!-- 				<prop key="user">root</prop> -->
+<!-- 				<prop key="password">93f0cb0614</prop> -->
+<!-- 			</props> -->
+<!-- 		</property> -->
+<!-- 		<property name="minPoolSize" value="10" /> -->
+<!-- 		<property name="maxPoolSize" value="100" /> -->
+<!-- 		<property name="borrowConnectionTimeout" value="30" /> -->
+<!-- 		<property name="testQuery" value="select 1" /> -->
+<!-- 		<property name="maintenanceInterval" value="60" /> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="jtaDataSource2" class="com.atomikos.jdbc.AtomikosDataSourceBean" -->
+<!-- 		init-method="init" destroy-method="close"> -->
+<!-- 		<property name="uniqueResourceName" value="ds2" /> -->
+<!-- 		<property name="xaDataSourceClassName" -->
+<!-- 			value="com.mysql.jdbc.jdbc2.optional.MysqlXADataSource" /> -->
+<!-- 		<property name="xaProperties"> -->
+<!-- 			<props> -->
+<!-- 				<prop key="URL">jdbc:mysql://10.19.3.160:3306/addresscollect</prop> -->
+<!-- 				<prop key="user">root</prop> -->
+<!-- 				<prop key="password">93f0cb0614</prop> -->
+<!-- 			</props> -->
+<!-- 		</property> -->
+<!-- 		<property name="minPoolSize" value="10" /> -->
+<!-- 		<property name="maxPoolSize" value="100" /> -->
+<!-- 		<property name="borrowConnectionTimeout" value="30" /> -->
+<!-- 		<property name="testQuery" value="select 1" /> -->
+<!-- 		<property name="maintenanceInterval" value="60" /> -->
+<!-- 	</bean> -->
+	
+<!-- 	<bean id="c3p0DataSource1" class="com.mchange.v2.c3p0.ComboPooledDataSource" -->
+<!-- 		destroy-method="close"> -->
+<!-- 		<property name="driverClass" value="com.mysql.jdbc.Driver" /> -->
+<!-- 		<property name="jdbcUrl" value="${url1}" /> -->
+<!-- 		<property name="user" value="${username1}" /> -->
+<!-- 		<property name="password" value="${password1}" /> -->
+<!-- 		<property name="minPoolSize" value="100" /> -->
+<!-- 		<property name="maxPoolSize" value="2000" /> -->
+<!-- 		<property name="maxIdleTime" value="60" /> -->
+<!-- 		<property name="acquireIncrement" value="100" /> -->
+<!-- 		<property name="maxStatements" value="100" /> -->
+<!-- 		<property name="initialPoolSize" value="100" /> -->
+<!-- 		<property name="idleConnectionTestPeriod" value="60" /> -->
+<!-- 		<property name="acquireRetryAttempts" value="30" /> -->
+<!-- 		<property name="acquireRetryDelay" value="100" /> -->
+<!-- 		<property name="breakAfterAcquireFailure" value="false" /> -->
+<!-- 		<property name="testConnectionOnCheckout" value="false" /> -->
+<!-- 	</bean> -->
+	
+<!-- 	<bean id="c3p0DataSource2" class="com.mchange.v2.c3p0.ComboPooledDataSource" -->
+<!-- 		destroy-method="close"> -->
+<!-- 		<property name="driverClass" value="com.mysql.jdbc.Driver" /> -->
+<!-- 		<property name="jdbcUrl" value="${url2}" /> -->
+<!-- 		<property name="user" value="${username2}" /> -->
+<!-- 		<property name="password" value="${password2}" /> -->
+<!-- 		<property name="minPoolSize" value="100" /> -->
+<!-- 		<property name="maxPoolSize" value="2000" /> -->
+<!-- 		<property name="maxIdleTime" value="60" /> -->
+<!-- 		<property name="acquireIncrement" value="100" /> -->
+<!-- 		<property name="maxStatements" value="100" /> -->
+<!-- 		<property name="initialPoolSize" value="100" /> -->
+<!-- 		<property name="idleConnectionTestPeriod" value="60" /> -->
+<!-- 		<property name="acquireRetryAttempts" value="30" /> -->
+<!-- 		<property name="acquireRetryDelay" value="100" /> -->
+<!-- 		<property name="breakAfterAcquireFailure" value="false" /> -->
+<!-- 		<property name="testConnectionOnCheckout" value="false" /> -->
+<!-- 	</bean> -->
+	
+	<bean id="searchServiceImp" name="searchServiceImp" class="com.search.implement.MySearchServiceImp">
+		<property name="clusterList">
+			<list>
+<!-- 				<value>10.22.28.205:9300</value> -->
+<!-- 				<value>10.22.28.54:9300</value> -->
+                    <value>localhost:9300</value>
+			</list>
+		</property>
+		<property name="searchClientConfigureMap">
+			<map>
+				<!-- 连接超时设置 -->
+				<entry key="client.transport.ping_timeout" value="10s">
+				</entry>
+				<!-- 嗅探集群设置 -->
+				<entry key="client.transport.sniff" value="true">
+				</entry>
+				<!-- 忽略集群，外网正式环境设置成true -->
+				<entry key="client.transport.ignore_cluster_name" value="true">
+				</entry>
+			</map>
+		</property>
+		<!-- 相似度计算配置 -->
+<!-- 		<property name="similarityMap"> -->
+<!-- 			<map> -->
+<!-- 				<entry key="addresscollect" value="data_name"></entry> -->
+<!-- 				<entry key="result_all" value="data_name"></entry> -->
+<!-- 				<entry key="auditback_new" value="data_name"></entry> -->
+<!-- 			</map> -->
+<!-- 		</property> -->
+<!-- 		<property name="pinyinList"> -->
+<!-- 			<list> -->
+<!-- 				<value>name</value> -->
+<!-- 				<value>address</value> -->
+<!-- 				<value>alias</value> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+	</bean>  
+
+	
+</beans>

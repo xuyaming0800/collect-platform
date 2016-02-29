@@ -1,0 +1,11 @@
+{   
+    "ANDRIOD_PAGE_SIZE":{"value": "100","comments":""}, 
+    "deadLineTimeOld":{"value": "2014-06-15 00:00:00","comments":""}, 
+    "deadLineTimeNew":{"value": "2014-06-15 00:00:00","comments":""},
+    "USE_CONTENT_DES":{"value": "false","comments":""},
+    "ORGIN_IMG_URL":{"value": "http://10.0.0.2/orgin-img","comments":""},
+    "COLLECT_IMG_URL":{"value": "http://10.0.0.2/img","comments":""},
+    "COLLECT_IMG_REAL_PATH":{"value": "/Java/nginx/html","comments":"图片文件物理位置"},
+    "COLLECT_MAX_PASSIVE_TASK_SIZE":{"value": "20","comments":"最大周边所有被动任务检索数量"},
+    "DEV_MODE":{"value": "true","comments":""}
+}

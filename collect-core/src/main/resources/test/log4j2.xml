@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</Console>
+		<RollingRandomAccessFile name="collectRollingLog"
+			fileName="collect-core-log/collect-core.log"
+			filePattern="collect-core-log/$${date:yyyy-MM}/collect-core-%d{MM-dd-yyyy}-%i.log.gz">
+			<PatternLayout>
+				<Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+			</Policies>
+			<DefaultRolloverStrategy max="30" />
+		</RollingRandomAccessFile>
+		
+		<RollingRandomAccessFile name="auditErrorollingLog"
+			fileName="collect-core-log/collect-core-audit-error.log"
+			filePattern="collect-core-log/$${date:yyyy-MM}/collect-core-%d{MM-dd-yyyy}-%i.log.gz">
+			<PatternLayout>
+				<Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+			</Policies>
+			<DefaultRolloverStrategy max="30" />
+		</RollingRandomAccessFile>
+	</Appenders>
+	<Loggers>
+		<logger name="com.autonavi.collect" level="info">
+		<AppenderRef ref="collectRollingLog" />
+		</logger>
+		
+		<logger name="autonavi.online.framework" level="warn">
+		<AppenderRef ref="collectRollingLog" />
+		</logger>
+		
+		<logger name="com.search.implement.MySearchServiceImp" level="debug">
+		<AppenderRef ref="collectRollingLog" />
+		</logger>
+		
+		<logger name="com.autonavi.collect.manager.SyncTaskBusinessMananger" level="info">
+		<AppenderRef ref="auditErrorollingLog" />
+		</logger>
+		<logger name="com.autonavi.collect.manager.SyncTaskUtilBusinessManager" level="info">
+		<AppenderRef ref="auditErrorollingLog" />
+		</logger>
+		
+
+<!-- 		<Root level="info"> -->
+<!--            <AppenderRef ref="collectRollingLog" /> -->
+<!-- 		</Root> -->
+	</Loggers>
+</Configuration>
+

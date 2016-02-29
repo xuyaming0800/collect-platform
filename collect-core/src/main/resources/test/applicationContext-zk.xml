@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:props="http://www.autonavi.com/schema/configCenter"
+	xmlns:shard-cc="http://www.autonavi.com/schema/shardConfigCenter"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.autonavi.com/schema/configCenter
+    http://www.autonavi.com/schema/configCenter/props-cc.xsd
+    http://www.autonavi.com/schema/shardConfigCenter
+    http://www.autonavi.com/schema/shardConfigCenter/shard-cc.xsd">
+
+	<props:config>
+		<props:info configJson="/config-biz.json"></props:info>
+	</props:config>
+
+	<shard-cc:config>
+		<shard-cc:info configJson="/config-base.json" />
+	</shard-cc:config>
+
+</beans>

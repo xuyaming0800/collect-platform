@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</Console>
+		<RollingRandomAccessFile name="timesRollingRandomAccessFile"
+			fileName="times.log" filePattern="$${date:yyyy-MM}/times-%d{MM-dd-yyyy}-%i.log.gz">
+			<PatternLayout>
+				<Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+			</Policies>
+			<DefaultRolloverStrategy max="30" />
+		</RollingRandomAccessFile>
+		<RollingRandomAccessFile name="outRollingRandomAccessFile"
+			fileName="out.log" filePattern="$${date:yyyy-MM}/out-%d{MM-dd-yyyy}-%i.log.gz">
+			<PatternLayout>
+				<Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+			</Policies>
+			<DefaultRolloverStrategy max="30" />
+		</RollingRandomAccessFile>
+		<Async name="Async">
+			<AppenderRef ref="outRollingRandomAccessFile" />
+		</Async>
+	</Appenders>
+	<Loggers>
+		<logger name="autonavi.online.framework" level="error">
+		</logger>
+		<logger name="com.autonavi.collect" level="info">
+		</logger>
+<!-- 		<logger name="com.mchange" level="debug"> -->
+<!-- 		</logger> -->
+		
+		<!-- <logger name="com.gd.app" level="TRACE"> <AppenderRef ref="Async" 
+			/> </logger> -->
+		<logger name="org.apache.zookeeper" level="error">
+			<AppenderRef ref="Console" />
+		</logger>
+		<Root level="info">
+			<AppenderRef ref="Console" />
+		</Root>
+	</Loggers>
+</Configuration>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxTotal" value="600" />
+		<property name="maxIdle" value="200" />
+		<property name="timeBetweenEvictionRunsMillis" value="20000" />
+		<property name="minEvictableIdleTimeMillis" value="20000" />
+		<property name="testOnBorrow" value="true" />
+	</bean>
+	<bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+		<constructor-arg ref="jedisPoolConfig" />
+		<constructor-arg value="localhost" />
+		<constructor-arg type="int" value="6379" />
+		<constructor-arg type="int" value="5000" />
+<!-- 		<constructor-arg value="aA111111" /> -->
+	</bean>
+</beans>

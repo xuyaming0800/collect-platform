@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://code.alibabatech.com/schema/dubbo
+	http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<dubbo:application name="collect-web" />
+
+	<!-- 使用multicast广播注册中心暴露发现服务地址 -->
+	<!-- <dubbo:registry address="multicast://224.4.1.4:2048" /> -->
+	<dubbo:registry
+		address="zookeeper://localhost:2181?backup=localhost:2182,localhost:2183" />
+	<dubbo:consumer timeout="60000" />
+
+	<!-- <dubbo:protocol name="dubbo" port="20889" /> -->
+
+	<dubbo:reference interface="com.autonavi.collect.service.TaskTokenService"
+		id="taskTokenServiceImpl" />
+	<dubbo:reference interface="com.autonavi.collect.service.TaskScoreService"
+		id="taskScoreServiceImpl" />
+	<dubbo:reference interface="com.autonavi.collect.service.TaskCollectUtilService"
+		id="taskCollectUtilServiceImpl" />
+	<dubbo:reference interface="com.autonavi.collect.service.PassiveTaskService"
+		id="passiveTaskServiceImpl" />
+	<dubbo:reference interface="com.autonavi.collect.service.InitiativeTaskService"
+		id="initiativeTaskServiceImpl" />
+	<dubbo:reference interface="com.autonavi.collect.service.MyTaskService"
+		id="myTaskServiceImpl" />
+	<dubbo:reference interface="com.autonavi.collect.service.TaskSearchService"
+		id="taskSearchServiceImpl" />
+	<dubbo:reference interface="com.autonavi.collect.service.CollectTaskClazzService"
+		id="collectTaskClazzServiceImpl" />
+	<dubbo:reference
+		interface="com.autonavi.collect.service.CollectTaskReAuditService" id="collectTaskReAuditServiceImpl" />
+	<dubbo:reference interface="cn.dataup.collect.tools.service.CollectShapeService"
+		id="collectShapeServiceImpl" />
+
+
+	<!-- 用dubbo协议在20880端口暴露服务 -->
+	<!-- <dubbo:protocol name="dubbo" port="20889" /> -->
+
+	<!-- <dubbo:reference id="taskHandlerService" -->
+	<!-- interface="com.gd.app.service.TaskHandlerService"></dubbo:reference> -->
+
+	<!-- <dubbo:reference id="taskUtilService" -->
+	<!-- interface="com.gd.app.service.TaskUtilService"></dubbo:reference> -->
+
+	<!-- <dubbo:reference id="appealService" -->
+	<!-- interface="com.gd.app.service.AppealService"></dubbo:reference> -->
+
+	<!-- <dubbo:reference id="agentTaskService" -->
+	<!-- interface="com.gd.app.service.AgentTaskService"></dubbo:reference> -->
+
+	<!-- <dubbo:reference id="agentTailInfoService" -->
+	<!-- interface="com.gd.app.service.AgentTailInfoService"></dubbo:reference> -->
+
+
+</beans>

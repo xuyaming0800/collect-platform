@@ -1,0 +1,10 @@
+{   
+    "ANDRIOD_PAGE_SIZE":{"value": "100","comments":""}, 
+    "deadLineTimeOld":{"value": "2014-06-15 00:00:00","comments":""}, 
+    "deadLineTimeNew":{"value": "2014-06-15 00:00:00","comments":""},
+    "USE_CONTENT_DES":{"value": "false","comments":""},
+    "ORGIN_IMG_URL":{"value": "http://123.56.44.160/collect-img/orgin-img","comments":""},
+    "COLLECT_IMG_URL":{"value": "http://123.56.44.160/collect-img/img","comments":""},
+    "COLLECT_IMG_REAL_PATH":{"value": "/data01/yaming.xu/collect-product/collect-img","comments":"图片文件物理位置"},
+    "DEV_MODE":{"value": "true","comments":""}
+}

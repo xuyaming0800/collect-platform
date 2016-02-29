@@ -1,0 +1,4 @@
+{
+"IMPORT_PASSIVE_DATABASE_KEY":{"value":"1","comments":"导入数据来源数据源ID"},
+"COLLECT_PASSIVE_DATABASE_KEY":{"value":"2","comments":"被动任务数据源ID"}
+}

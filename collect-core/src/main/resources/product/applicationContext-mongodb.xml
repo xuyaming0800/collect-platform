@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+						http://www.springframework.org/schema/aop
+						http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+						http://www.springframework.org/schema/tx 
+						http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-4.1.xsd
+						http://www.springframework.org/schema/util
+						http://www.springframework.org/schema/util/spring-util-4.1.xsd
+            			http://www.springframework.org/schema/data/mongo
+            			http://www.springframework.org/schema/data/mongo/spring-mongo-1.7.xsd">
+
+	<mongo:mongo-client replica-set="${mongodb.replica-set}">
+		<mongo:client-options min-connections-per-host="${mongodb.min-connections-per-host}"
+			connections-per-host="${mongodb.connections-per-host}"
+			threads-allowed-to-block-for-connection-multiplier="${mongodb.threads-allowed-to-block-for-connection-multiplier}"
+			connect-timeout="${mongodb.connect-timeout}" max-wait-time="${mongodb.max-wait-time}"
+			socket-keep-alive="${mongodb.socket-keep-alive}" socket-timeout="${mongodb.socket-timeout}" />
+	</mongo:mongo-client>
+
+	<!-- mongo的工厂，通过它来取得mongo实例,dbname为mongodb的数据库名，没有的话会自动创建 -->
+	<mongo:db-factory id="testFactory" dbname="test"
+		mongo-ref="mongo" />
+
+	<!-- Spring提供的mongodb操作模板 -->
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<constructor-arg ref="testFactory" />
+	</bean>
+
+	<!-- 映射转换器，扫描back-package目录下的文件，根据注释，把它们作为mongodb的一个collection的映射 -->
+	<!-- <mongo:mapping-converter base-package="com.xxx.xxx.domain" /> -->
+
+	<!-- mongodb bean的仓库目录，会自动扫描扩展了MongoRepository接口的接口进行注入 -->
+	<!-- <mongo:repositories base-package="com.xxx.xxx.persist.mongodb" /> -->
+
+
+</beans>

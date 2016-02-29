@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://code.alibabatech.com/schema/dubbo
+	http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+	
+	<dubbo:application name="collect-mgr-web" />
+
+	<!-- 使用multicast广播注册中心暴露发现服务地址 -->
+<!-- 	<dubbo:registry address="multicast://224.4.1.4:2048" /> -->
+    <dubbo:registry address="zookeeper://10.51.48.142:2181?backup=10.51.48.142:2182,10.51.48.142:2183" />
+    <dubbo:consumer timeout="60000"/> 
+    
+<!--     <dubbo:protocol name="dubbo" port="20889" /> -->
+    
+	<dubbo:reference interface="com.autonavi.collect.service.CollectTaskClazzMgrService"
+		id="collectTaskClazzServiceMgrImpl" />
+	<dubbo:reference interface="com.autonavi.collect.service.CollectMgrUtilService"
+		id="collectMgrUtilServiceImpl" />
+		
+   
+   	<!-- 用dubbo协议在20880端口暴露服务 -->
+<!-- 	<dubbo:protocol name="dubbo" port="20889" /> -->
+	
+<!-- 	<dubbo:reference id="taskHandlerService" -->
+<!-- 		interface="com.gd.app.service.TaskHandlerService"></dubbo:reference> -->
+	
+<!-- 	<dubbo:reference id="taskUtilService" -->
+<!-- 		interface="com.gd.app.service.TaskUtilService"></dubbo:reference> -->
+	
+<!-- 	<dubbo:reference id="appealService" -->
+<!-- 		interface="com.gd.app.service.AppealService"></dubbo:reference> -->
+	
+<!-- 	<dubbo:reference id="agentTaskService" -->
+<!-- 		interface="com.gd.app.service.AgentTaskService"></dubbo:reference> -->
+	
+<!-- 	<dubbo:reference id="agentTailInfoService" -->
+<!-- 		interface="com.gd.app.service.AgentTailInfoService"></dubbo:reference> -->
+
+
+</beans>

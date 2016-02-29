@@ -1,0 +1,4 @@
+{   
+ "SHAPE_FILE_ROOT":{"value": "/data01/yaming.xu/collect-product/ShpFiles/","comments":"SHAPE文件根目录"},
+ "SINGLE_DATASOURCE_KEY":{"value":"1","comments":"单一来源数据源ID"}
+}

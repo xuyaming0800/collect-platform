@@ -1,0 +1,54 @@
+{
+    "dataSources": {
+        "1": {
+            "props": {
+                "strategyName": "rr",
+                "realDss": [
+                    "c3p0DataSource1"
+                ]
+            }
+        }
+    },
+    "shardIndex": 1,
+    "indexTableMap": {
+        "USER_OWNER_ID_INDEX": [
+            {
+                "name": "user_id",
+                "columnType": "long",
+                "columnName": "user_id",
+                "length": 32
+            },
+            {
+                "name": "owner_id",
+                "columnType": "long",
+                "columnName": "owner_id",
+                "length": 32
+            }
+            
+        ]
+    },
+    "segmentTables": [],
+    "realDataSources": {
+        "c3p0DataSource1": {
+            "beanClass": "com.mchange.v2.c3p0.ComboPooledDataSource",
+            "props": {
+                "acquireRetryAttempts": "30",
+                "acquireRetryDelay": "100",
+                "maxIdleTime": "3",
+                "unreturnedConnectionTimeout":"300",
+                "testConnectionOnCheckout": "false",
+                "breakAfterAcquireFailure": "false",
+                "password": "root",
+                "acquireIncrement": "100",
+                "idleConnectionTestPeriod": "60",
+                "maxPoolSize": "4",
+                "maxStatements": "10",
+                "minPoolSize": "1",
+                "driverClass": "com.mysql.jdbc.Driver",
+                "initialPoolSize": "1",
+                "jdbcUrl": "jdbc:mysql://192.168.120.23:3306/collectuser_dev?rewriteBatchedStatements=true",
+                "user": "root"
+            }
+        }
+    }
+}
